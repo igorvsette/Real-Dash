@@ -1,0 +1,137 @@
+body {
+    background-color: #1b263b;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #e0e1dd;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #0d1b2a;
+    border-radius: 20px;
+}
+
+header h1{
+    font-size: 48px;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+header nav a {
+    font-size: 30px;
+    text-decoration: none;
+    color: #e0e1dd;
+    margin: 0 10px;
+}
+
+.hero{
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero h2 {
+    font-size: 40px;
+    padding: 10px;
+    letter-spacing: 3px;
+    margin: auto;
+}
+ .hero p{
+    font-size: 25px;
+    letter-spacing: 2px;
+    margin: auto;
+ }
+
+ .cta{
+    background: linear-gradient(135deg, #90a955, #61892f);
+    background-size: 200%;
+    background-position: left;
+    color: white;
+    padding: 30px 40px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    max-width: 600px;
+    margin: 40px auto;
+    cursor: pointer;
+
+
+ }
+
+ .cta:hover{
+     transform: translateY(-10px); /* sobe tudo */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* sombra mais profunda */
+    background-color: #7a9845; /* muda o fundo */
+    background-position: right;
+
+ }
+
+ .cta p{
+    font-size: 28px;
+    letter-spacing: 2px;
+ }
+
+ .live-rates{
+    margin: 30px auto;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+ }
+
+ .live-rates h4{
+    font-size: 40px;
+    padding: 0 auto;
+    margin: 0;
+ }
+
+ .table{
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+ }
+
+ th, td{
+    padding: 15px 15px;
+    min-width: 350px;
+    text-align: left;
+    font-size: 22px;
+    border: 1px solid #ccc
+
+ }
+
+ th{
+    font-size: 24px;
+    background-color: #90a955 ;
+    color: black;
+ }
+
+ tr :nth-child(child){
+    background-color: #1b1b1b;
+ }
+
+ .changer{
+    font-weight: 900px;
+ }
+
+ nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    margin: 0 15px;
+    position: relative;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #90a955; /* cor ao passar o mouse */
+}
+
+ 

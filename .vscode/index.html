@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css">
+    <title>Project Coin</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!--Link da fonte que será usada no CSS-->
+
+
+</head>
+<body>
+    <header>
+        <h1>PROJETO COTAÇÃO</h1>
+    <!--Cabeçalho da Pagina-->
+
+    <nav>
+        <a href="https://brazileconomy.com.br/?gad_source=1&gad_campaignid=22875037649&gclid=EAIaIQobChMIzb6r74f-jwMVO1lIAB139hMIEAAYAyAAEgLXi_D_BwE">NOTICIAS</a>
+        <a href="https://accounts.binance.com/en/register?irclickid=3029391cN9d3911f0a519c1e7615f286&irgwc=1&ref=KHKSHVOF">COMPRAR CRIPTO</a>
+        <a href="https://www.remessaonline.com.br">COMPRAR MOEDAS</a>
+    </nav>
+    <!--Menu de navegação da pagina-->
+    </header>
+
+    <section class="hero">
+        <h2>PROJETO COTAÇÃO</h2>
+        <p>Descubra as cotações e notícias das moedas mundiais em um só lugar – rápido, confiável e sempre atualizado para você.</p>
+
+    </section>
+    <!--section é uma sessão da pagina-->
+    <div class="cta">
+        <p>O mundo muda a cada segundo. As cotações também.</p>
+    </div>
+
+    <section class="live-rates"> 
+        <h4>MOEDAS AO VIVO</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>MOEDA</th>
+                    <th>VALOR EM REAL</th>
+                    <th>ALTERAÇÃO/24H</th>
+                    <!--<th> usado para dar titulos as colunas da tabela-->
+                </tr>
+                <!--Usada para criar linhas na tabela-->
+
+            </thead>
+            <!--<thead> usado para agrupar o cabeçalho da tabela-->
+                <tbody id="rates-body">
+                    <!--"id" é identificador unico-->
+                    <tr>
+                        <td>USD | DOLAR AMERICANO</td>
+                        <td id="usd-price"></td>
+                        <td id="usd-change" class="changer"></td>
+                    </tr>
+                    <!--<tr> nada mais é que a linha da tabela-->
+
+                    <tr>
+                        <td>EUR | EURO</td>
+                        <td id="eur-price"></td>
+                        <td id="eur-change" class="changer"></td>
+                        <!--<td> serve para criar dados dentro das tabelas-->
+                    </tr>
+
+                    <tr>
+                        <td>BTC | BITCOIN </td>
+                        <td id="btc-price"></td>
+                        <td id="btc-change" class="changer"></td>
+                    </tr>
+
+                    <tr>
+                        <td>GBP | LIBRA </td>
+                        <td id="gbp-price"></td>
+                        <td id="gbp-change" class="changer"></td>
+                    </tr>
+
+                </tbody>
+                <!--<tbody> é usada para separar linhas que são o corpo das tabelas no HTML-->
+
+        </table>
+        <!--<table> é uma tag que adiciona tabela a pagina-->
+
+    </section>
+
+    <script>
+        async function getvalues(){
+            try{
+              const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL,GBP-BRL');
+              const data = await response.json();
+
+              const usdRate = data.USDBRL;
+              const eurRate = data.EURBRL;
+              const btcRate = data.BTCBRL;
+              const gbpRate = data.GBPBRL;
+
+              const usdChangeElement = document.getElementById ('usd-change');
+              const eurChangeElement = document.getElementById ('eur-change');
+              const btcChangeElement = document.getElementById ('btc-change');
+              const gbpChangeElement = document.getElementById ('gbp-change');
+              //document.getElementById() serve para selecionar um elemento "id" do HTML para o JavaScrip para que eu possa trabalhar com ele//
+
+              document.getElementById('usd-price').textContent = parseFloat(usdRate.bid).toFixed(2);
+              document.getElementById('eur-price').textContent = parseFloat(eurRate.bid).toFixed(2);
+              document.getElementById('btc-price').textContent = parseFloat(btcRate.bid).toFixed(2);
+              document.getElementById('gbp-price').textContent = parseFloat(gbpRate.bid).toFixed(2);
+
+              usdChangeElement.textContent = `${parseFloat(usdRate.pctChange).toFixed(2)}% ${usdRate.pctChange > 0 ? '↑' : '↓'}`;
+              eurChangeElement.textContent = `${parseFloat(eurRate.pctChange).toFixed(2)}% ${eurRate.pctChange > 0 ? '↑' : '↓'}`;
+              btcChangeElement.textContent = `${parseFloat(btcRate.pctChange).toFixed(2)}% ${btcRate.pctChange > 0 ? '↑' : '↓'}`;
+              gbpChangeElement.textContent = `${parseFloat(gbpRate.pctChange).toFixed(2)}% ${gbpRate.pctChange > 0 ? '↑' : '↓'}`;
+
+
+              if (eurRate.pctChange > 0) {
+                eurChangeElement.style.color = 'green'
+              } else {
+                 eurChangeElement.style.color = 'red'
+              }
+
+                if (usdRate.pctChange > 0) {
+                usdChangeElement.style.color = 'green'
+              } else {
+                 usdChangeElement.style.color = 'red'
+              }     
+
+               if (btcRate.pctChange > 0) {
+                btcChangeElement.style.color = 'green'
+              } else {
+                 btcChangeElement.style.color = 'red'
+              }     
+
+               if (gbpRate.pctChange > 0) {
+                gbpChangeElement.style.color = 'green'
+              } else {
+                 gbpChangeElement.style.color = 'red'
+              }     
+
+
+            } catch(error){
+            }
+            //fetch() puxa os dados dessa URL para dentro do codigo//
+            //catch(error) identifica qualquer erro dentro dessa URL usada no fetch()//
+        }
+        getvalues();
+    </script>
+
+</body>
+</html>
