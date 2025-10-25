@@ -1,6 +1,6 @@
 body {
     background-color: #1b263b;
-    font-family: "Bebas Neue", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 400;
     font-style: normal;
     color: #e0e1dd;
@@ -94,7 +94,11 @@ header nav a {
     width: 100%;
     margin: 0 auto;
     border-collapse: collapse;
+    border-spacing: 0;
     margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
  }
 
  th, td{
@@ -102,14 +106,14 @@ header nav a {
     min-width: 350px;
     text-align: left;
     font-size: 22px;
-    border: 1px solid #ccc
-
+    border: 1px solid #ccc;
+    border-radius: 12px;
  }
 
  th{
     font-size: 24px;
-    background-color: #90a955 ;
-    color: black;
+    background-color: #0d1b2a;
+    color: #ccc;
  }
 
  tr :nth-child(child){
@@ -122,7 +126,7 @@ header nav a {
 
  nav a {
     text-decoration: none;
-    color: black;
+    color: #ccc;
     font-size: 18px;
     margin: 0 15px;
     position: relative;
@@ -133,5 +137,10 @@ header nav a {
 nav a:hover {
     color: #90a955; /* cor ao passar o mouse */
 }
+
+footer {
+   text-align: center;
+
+  }
 
  
